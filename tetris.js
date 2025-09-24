@@ -48,7 +48,6 @@ class TetrisGame {
     bindEvents() {
         document.addEventListener('keydown', (e) => {
             if (this.isGameOver || this.isPaused) {
-                if (e.code === 'KeyP') this.togglePause();
                 return;
             }
 
@@ -68,10 +67,11 @@ class TetrisGame {
                 case 'Space':
                     this.hardDrop();
                     break;
-                case 'KeyP':
-                    this.togglePause();
-                    break;
             }
+        });
+
+        this.canvas.addEventListener('click', () => {
+            this.togglePause();
         });
     }
 
